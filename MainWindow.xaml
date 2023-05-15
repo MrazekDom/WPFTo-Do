@@ -1,12 +1,111 @@
-﻿<Window x:Class="WPFTo_Do.MainWindow"
+﻿<Window x:Name="MainWindow1" x:Class="WPFTo_Do.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFTo_Do"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Basic To-Do List" 
+        Height="500" 
+        Width="800" 
+        ResizeMode="NoResize" 
+        BorderBrush="Aquamarine" 
+        WindowStartupLocation="CenterScreen" 
+        Icon="/icons8-app-24.png"  
+        MouseLeftButtonDown="MainWindow1_MouseLeftButtonDown" 
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        >
+
+    <Border CornerRadius="35" BorderThickness="0">
+        <Grid x:Name="MainGrid" Background="#FF402464" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="11*"/>
+                <ColumnDefinition Width="181*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox x:Name="ListBoxAllTasks" 
+                 HorizontalAlignment="Left" 
+                 Margin="274,86,0,0" 
+                 VerticalAlignment="Top" 
+                 Height="263" Width="425" 
+                 Grid.Column="2" >
+                <ListBox.ItemTemplate>
+                    <!-- vytvarim template jak se budou zobrazovat objecty v ListBoxu - TaskModel templates-->
+                    <DataTemplate>
+                        <StackPanel Height="130">
+                            <Label Content="Task:" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Task}" />
+                            <Label Content="Day:" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Day}" />
+                            <Label Content="Notes:" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Notes}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
+                </ListBox.Background>
+            </ListBox>
+            <Label x:Name="LabelYourTasks"  
+               Content="Your Tasks" 
+               HorizontalContentAlignment="Center" 
+               HorizontalAlignment="Left" 
+               Margin="424,35,0,0" 
+               VerticalAlignment="Top" 
+               Width="126" 
+               FontWeight="Bold" 
+               Height="28" 
+               Grid.Column="2">
+                <Label.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientActiveCaptionColorKey}}"/>
+                </Label.Background>
+            </Label>
+            <Button x:Name="RemoveTaskBtn" Content="REMOVE A TASK" FontWeight="Bold" HorizontalAlignment="Left" Margin="529,368,0,0" VerticalAlignment="Top" Height="50" Width="170" Background="#FF386D76" Click="RemoveTaskBtn_Click" Grid.Column="2"/>
+            <Button x:Name="RemoveAllButton" Content="REMOVE ALL" FontWeight="Bold" HorizontalAlignment="Left" Margin="274,368,0,0" VerticalAlignment="Top" Height="50" Width="186" Background="#FF386D76" Click="RemoveAllButton_Click" Grid.Column="2" />
+            <!-- Levy stack panel - boxy a tlacitko pro pridani Tasku -->
+            <StackPanel Margin="6,53,455,22" Grid.Column="1" Grid.ColumnSpan="2">
+                <Label  x:Name="LabelTask" Margin="20" Content="Enter the description of your task here:" FontWeight="DemiBold" Width="249" Height="25" HorizontalContentAlignment="Center">
+                    <Label.Background>
+                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientActiveCaptionColorKey}}"/>
+                    </Label.Background>
+                </Label>
+                <TextBox x:Name="TextBoxTask" TextWrapping="Wrap" Text="*Description*" Width="248" Height="33">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
+                    </TextBox.Background>
+                </TextBox>
+                <Label x:Name="LabelDay" Content="Is this task for today or tommorrow?" Width="249" Margin="20" HorizontalContentAlignment="Center" FontWeight="DemiBold" Height="25">
+                    <Label.Background>
+                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientActiveCaptionColorKey}}"/>
+                    </Label.Background>
+                </Label>
+                <ComboBox x:Name="DaysComboBox" Width="120" SelectedIndex="0" Margin="0,0,0,20">
+                    <ComboBox.Background>
+                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
+                    </ComboBox.Background>
+                    <ComboBoxItem>Today</ComboBoxItem>
+                    <ComboBoxItem>Tommorrow</ComboBoxItem>
+                    <ComboBoxItem/>
+                </ComboBox>
+                <Label x:Name="LabelNotes" Content="Any notes etc. for your task" Width="253" FontWeight="SemiBold" HorizontalContentAlignment="Center">
+                    <Label.Background>
+                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientActiveCaptionColorKey}}"/>
+                    </Label.Background>
+                </Label>
+                <TextBox x:Name="TextBoxNotes" TextWrapping="Wrap" Text="*Notes*" Width="256" Margin="20" Height="50">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
+                    </TextBox.Background>
+                </TextBox>
+                <Button x:Name="ButtonAdd" Content="ADD A TASK" Width="154" Height="32" Background="#FF386D76" FontWeight="Bold" Click="Button_Click"/>
+            </StackPanel>
+            <Button x:Name="CloseButton" Grid.Column="2" Content="CLOSE" FontWeight="Bold" HorizontalAlignment="Left" Margin="274,10,0,0" VerticalAlignment="Top" Height="53" Width="88" Click="CloseButton_Click">
+                <Button.OpacityMask>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
+                </Button.OpacityMask>
+            </Button>
+        </Grid>
+    </Border>
 </Window>

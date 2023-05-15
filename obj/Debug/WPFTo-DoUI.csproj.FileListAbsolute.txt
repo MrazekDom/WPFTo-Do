@@ -1,4 +1,3 @@
-C:\Users\mraze\source\repos\WPFTo-Do\bin\Debug\ToDoDatabase.db
 C:\Users\mraze\source\repos\WPFTo-Do\bin\Debug\WPFTo-Do.exe.config
 C:\Users\mraze\source\repos\WPFTo-Do\bin\Debug\WPFTo-Do.exe
 C:\Users\mraze\source\repos\WPFTo-Do\bin\Debug\WPFTo-Do.pdb
@@ -21,3 +20,7 @@ C:\Users\mraze\source\repos\WPFTo-Do\obj\Debug\WPFTo-DoUI.csproj.CoreCompileInpu
 C:\Users\mraze\source\repos\WPFTo-Do\obj\Debug\WPFTo-DoUI.csproj.CopyComplete
 C:\Users\mraze\source\repos\WPFTo-Do\obj\Debug\WPFTo-Do.exe
 C:\Users\mraze\source\repos\WPFTo-Do\obj\Debug\WPFTo-Do.pdb
+C:\Users\mraze\source\repos\WPFTo-Do\bin\Debug\Library.dll
+C:\Users\mraze\source\repos\WPFTo-Do\bin\Debug\Library.pdb
+C:\Users\mraze\source\repos\WPFTo-Do\bin\Debug\Library.dll.config
+C:\Users\mraze\source\repos\WPFTo-Do\bin\Debug\ToDoDatabase.db
